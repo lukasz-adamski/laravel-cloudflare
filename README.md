@@ -25,20 +25,20 @@ This package will not load Cloudflare IPs automatically. To do this you can use 
 * `cloudflare:reload` - this command loads list of current Cloudflare Proxy IPs and store in application cache forever,
 * `cloudflare:view` - this command show list of loaded IPs from Cloudflare.
 
-# Automatic reloading
+## Automatic reloading
 If you want automatic refreshing of Cloudflare IP ranges you can schedule `cloudflare:reload` command in your app. To do this open `app/Console/Kernel.php` and modify `schedule` function like this:
 ```php
-    /**
-     * Define the application's command schedule.
-     *
-     * @param \Illuminate\Console\Scheduling\Schedule $schedule
-     * @return void
-     */
-    protected function schedule(Schedule $schedule)
-    {
-        $schedule->command('cloudflare:reload')
-            ->daily();
-    }
+/**
+ * Define the application's command schedule.
+ *
+ * @param \Illuminate\Console\Scheduling\Schedule $schedule
+    * @return void
+    */
+protected function schedule(Schedule $schedule)
+{
+    $schedule->command('cloudflare:reload')
+        ->daily();
+}
 ```
 
 

@@ -32,8 +32,8 @@ If you want automatic refreshing of Cloudflare IP ranges you can schedule `cloud
  * Define the application's command schedule.
  *
  * @param \Illuminate\Console\Scheduling\Schedule $schedule
-    * @return void
-    */
+ * @return void
+ */
 protected function schedule(Schedule $schedule)
 {
     $schedule->command('cloudflare:reload')

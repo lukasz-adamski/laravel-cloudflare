@@ -5,16 +5,19 @@ List of IP ranges used by Cloudflare can be found here: (https://www.cloudflare.
 ## Installation
 1. Install composer package using command:
 ```
-composer install lukasz-adamski/laravel-cloudflare
+composer require lukasz-adamski/laravel-cloudflare
 ```
+
 2. Add Service Provider in `config/app.php`:
 ```php
 Adams\Cloudflare\CloudflareServiceProvider::class,
 ```
-3. Add middleware to your project in `config/app/Http/Kernel.php` you can put this middleware where you want but if project is hosted with Cloudfare Reverse Proxy it is preferable to register it for all requests in `$middleware` variable.
+
+3. Add middleware to your project in `app/Http/Kernel.php`. You can put this middleware where you want but if project is hosted with Cloudfare Reverse Proxy it is preferable to register it for all requests in `$middleware` variable.
 ```php
 \Adams\Cloudflare\Moddleware\TrustProxies::class,
 ```
+
 4. Run artisan command to load fresh IPs from Cloudflare:
 ```
 php artisan cloudflare:reload
@@ -40,7 +43,3 @@ protected function schedule(Schedule $schedule)
         ->daily();
 }
 ```
-
-
-
-

@@ -2,6 +2,7 @@
 
 namespace Adams\Cloudflare\Commands;
 
+use Cache;
 use Illuminate\Console\Command;
 
 class View extends Command
@@ -27,9 +28,16 @@ class View extends Command
      */
     public function handle()
     {
+        $proxies = array_map(
+           function ($proxy) {
+              return [$proxy];
+           },
+           Cache::get('cloudflare.proxies', [])
+        );
+
         $this->table(
             ['Address'],
-            Cache::get('cloudflare.proxies', [])
+            $proxies
         );
     }
 }
